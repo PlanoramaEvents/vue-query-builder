@@ -1,26 +1,26 @@
 <template>
-  <div class="vqb-rule" :class="{ 'panel panel-default form-inline': styled }">
-    <div :class="{ 'form-group': styled }">
-      <label>{{ rule.label }}</label>
+  <div class="vqb-rule" :class="{ 'panel panel-default': styled }">
+    <div :class="{ 'form-inline m-1': styled }">
+      <label class="mr-2">{{ rule.label }}</label>
 
-      <select v-if="typeof rule.operands !== 'undefined'" v-model="query.selectedOperand" :class="{ 'form-control': styled }">
+      <select v-if="typeof rule.operands !== 'undefined'" v-model="query.selectedOperand" :class="{ 'form-control mr-2': styled }">
         <option v-for="operand in rule.operands">{{ operand }}</option>
       </select>
 
-      <select v-if="! isMultipleChoice" v-model="query.selectedOperator" :class="{ 'form-control': styled }">
+      <select v-if="! isMultipleChoice" v-model="query.selectedOperator" :class="{ 'form-control mr-2': styled }">
         <option v-for="operator in rule.operators" v-bind:value="operator">
           {{ operator }}
         </option>
       </select>
 
-      <input :class="{ 'form-control': styled }" v-if="rule.inputType === 'text'" type="text" v-model="query.value" :placeholder="labels.textInputPlaceholder">
-      <input :class="{ 'form-control': styled }" v-if="rule.inputType === 'number'" type="number" v-model="query.value">
+      <input :class="{ 'form-control mr-2': styled }" v-if="rule.inputType === 'text'" type="text" v-model="query.value" :placeholder="labels.textInputPlaceholder">
+      <input :class="{ 'form-control mr-2': styled }" v-if="rule.inputType === 'number'" type="number" v-model="query.value">
 
       <template v-if="isCustomComponent">
         <component :value="query.value" @input="updateQuery" :is="rule.component"></component>
       </template>
 
-      <div class="checkbox" v-if="rule.inputType === 'checkbox'">
+      <div class="checkbox mr-2" v-if="rule.inputType === 'checkbox'">
         <label v-for="choice in rule.choices">
           <input type="checkbox" :value="choice.value" v-model="query.value"> {{ choice.label }}
         </label>
@@ -34,7 +34,7 @@
 
       <select
         v-if="rule.inputType === 'select'"
-        :class="{ 'form-control': styled }"
+        :class="{ 'form-control mr-2': styled }"
         :multiple="rule.type === 'multi-select'"
         v-model="query.value">
 
@@ -49,7 +49,7 @@
 
       </select>
 
-      <button type="button" :class="{ 'close pull-right': styled }" @click="remove" v-html="labels.removeRule"></button>
+      <button type="button" :class="{ 'close ml-auto pull-right': styled }" @click="remove" v-html="labels.removeRule"></button>
     </div>
   </div>
 </template>
