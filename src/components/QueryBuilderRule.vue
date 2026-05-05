@@ -17,9 +17,7 @@
       <input :class="{ 'form-control mr-2': styled }" v-if="rule.inputType === 'number'" type="number" v-model="query.value">
 
       <template v-if="isCustomComponent">
-        <div class="vqb-custom-component">
-          <component :value="query.value" @input="updateQuery" :is="rule.component"></component>
-        </div>
+        <component :value="query.value" @input="updateQuery" :is="rule.component"></component>
       </template>
 
       <div class="checkbox mr-2" v-if="rule.inputType === 'checkbox'">
