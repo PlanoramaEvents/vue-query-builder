@@ -151,7 +151,7 @@ export default {
 </script>
 
 <style>
-  .vqb-custom-component {
+  .vue-query-builder-styled .vqb-custom-component {
     flex: 1 1 auto;
       flex-grow: 1;
       flex-shrink: 1;
